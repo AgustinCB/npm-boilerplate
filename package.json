@@ -4,9 +4,11 @@
   "description": "NPM package boilerplate with tests and babel for ES2015",
   "main": "./lib/main",
   "scripts": {
-    "test": "chmod +x test.sh; ./test.sh",
-    "gendoc": "./node_modules/jsdox/bin/jsdox --output docs src",
-    "build": "./node_modules/babel-cli/bin/babel.js src --presets babel-preset-es2015 --out-dir lib"
+    "lint": "cmd.js 'src/**/*.js'",
+    "test": "nodemon --exec 'mocha --require babel-core/register -R spec'",
+    "watch": "nodemon --exec 'npm run start'",
+    "gendoc": "jsdox --output docs src",
+    "build": "babel src --presets babel-preset-es2015 --out-dir lib"
   },
   "repository": {
     "type": "git",
@@ -31,5 +33,8 @@
     "jsdox": "^0.4.10",
     "mocha": "^2.5.3",
     "standard": "^7.1.2"
+  },
+  "dependencies": {
+    "nodemon": "^1.11.0"
   }
 }
